@@ -13,36 +13,55 @@
 - ~~IR感測器(180度)~~
 - led燈
 - ~~小型按鍵~~
+- ~~SPI-TFT screen~~
+- 桌上型電腦螢幕
 - register
 - 紙箱
 - moli捐贈的電腦螢幕
 ## 軟體
 - python
 - pygame
-## 前置下載$作業
+## 前置下載作業
 - pygame
 - python
+- vim
+- gpiozero
 - vnc -> 畫面連接
 ## 執行過程
 - 程式碼
   - dino.py：恐龍遊戲
-  - redLED.py：模擬紅色led燈亮起
-  - greenLED.py：模擬綠色led燈亮起
-  - yellowLED.py：模擬黃色led燈亮起
-  - Button.py：模擬開始按鈕 -> 無法套用
+  - 測試檔
+    - redLED.py：模擬紅色led燈亮起
+    - greenLED.py：模擬綠色led燈亮起
+    - yellowLED.py：模擬黃色led燈亮起
+    - Button.py：模擬開始按鈕 -> 無法套用
 - 硬體準備
   - raspberry pi環境組裝
   - 遊戲機台組裝
+      - 紙箱組裝
+  - 螢幕
+      - 用vcn連接筆電跟raspberry pi，讓 user 可以在筆電操縱raspberry pi 的 UI 畫面。
   - 紅外線感應裝置 -> fail
-  - LED燈裝置
+  - LED燈裝置:
+    - 使用同樣的電路分別接3個顏色的燈泡 
+    - 藍色：樹梅派(GPIO 17)
+      綠色：(GPIO 27) 
+      紅色： (GPIO 22) 
+    - 電路圖： ![螢幕擷取畫面 2024-01-04 173329](https://hackmd.io/_uploads/ByBu4zV_a.png)
+
   - 遊戲開始按鈕 ->從小按鈕變成巨型ENTER鍵(感謝熱心助教贊助)
 ## DinoGame START！
-- 執行程式碼：`python dino.py`
+- `sudo git clone https://github.com/110213018/DinoGame`下載dinoGame資料夾
+- `sudo apt-get install python3-gpiozero`LED💡會用到的模組
+- `pip install pygame`
+- 執行程式碼：`python3 dino.py`
 - 按下巨型ENTER鍵!!
 ## 心得回饋&遇到的困難
 1. raspberry pi環境組裝：
 因為在製作過程中，raspberry pi疑似因為過熱燒壞了，所以再重新設定raspberry pi上花了很多的心力跟時間。
-2. 遊戲機台組裝：
+2. 螢幕：
+本來是想外接 SPI-TFT 螢幕來顯示遊戲，但是因為螢幕本身顯示器比較弱，也沒有準備SD卡，所以無法使用。最後是把SPI-TFT 螢幕改用桌上型電腦螢幕，再用vcn的方式，連接筆電跟raspberry pi，讓 user 可以在筆電操縱raspberry pi 的 UI 畫面。
+4. 遊戲機台組裝：
 因為螢幕一直更換，所以重做了3次。
 3. 紅外線感應裝置：
 我們使用的是型號為MH-B的IR感測器，疑似因為放了長時間受潮導致故障，不知道為甚麼接收器一直接受到來源不明的訊號，後續有嘗試上網搜尋、撰寫程式碼，但就算程式碼成功編譯結果一樣無法正常運作(都是紅外線有被東西擋住造成反射)，最後經過長時間的奮鬥後不得已宣告放棄。
@@ -63,7 +82,7 @@
 - 許家維：dcard宣傳
 - 感謝Josh、蓬萊人偶等熱心助教的指導~^^
 ## 善用所學
-linux系統指令、python、raspberry pi、os、高等物理
+linux系統指令、python、raspberry pi、os、基礎物理
 ## 參考資料
 - 遊戲軟體參考：https://github.com/maxontech/chrome-dinosaur
 - 紅外線感測參考：https://youtu.be/7i0dvQGM-Zk?si=t10epjFb-RD5S5_6
